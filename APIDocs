@@ -1,0 +1,108 @@
+REST Apis
+
+1.	userInfo -
+	⁃	Url :- /newCreditCardApplication/userInfo
+	⁃	Method:- POST
+	⁃	Requestbody:- JSONpayload
+	⁃	Param:-
+	⁃	Response:- JSONresponse
+
+RequestPayload = {
+	firstName: “ ”,
+	middleName: “ “,
+l	astName: “ ”,
+	email: “ “,
+	contact: “ “,
+	dateOfBirth: “ “,
+	identityDocName: “ “,
+	identityDocNumber: “ “,
+	empInfo: {
+		empOrgName: “ “,
+		empOrgAdress: “ “,
+		empSalary: “ “,
+		empType: “ “
+		}
+	};
+
+Response = {
+	status: “ “,
+	data: {
+		userId: 1001,
+		message: “application submitted successfully.”
+		}
+	};
+
+2.	createUser -
+	⁃	Url :- /newCreditCardApplication/creditScoreInfo
+	⁃	Method:- POST
+	⁃	Requestbody:- JSONpayload
+	⁃	Param:-
+	⁃	Response:- JSONresponse
+
+RequestPayload = {
+		userId: 1001,
+		isCreditScoreAvailable: true/false,
+		creditScore: 350,
+		numberOfCreditCard: 2
+	};
+
+Response = {
+		status: “ “,
+		data: {
+				creditId: 1002,
+				message: “credit information saved”
+		};
+
+	};
+
+
+3. processCreditCard -
+		   ⁃  Url :- /newCreditCardApplication/processCardApplication
+	⁃	Method:- POST
+	⁃	Requestbody:- JSONpayload
+	⁃	Param:-
+	⁃	Response:- JSONresponse
+
+RequestPayload = {
+		userId: 1001,
+		creditScore: 350,
+	};
+
+Response = {
+		status: “ “,
+		data: {
+				cardStatus: Approved/Rejected/Pending
+				cardType: PLATINUM /GOLD /VISA
+				creditCardNumber: number,
+				message: “card approved and your card number is___ “
+		};
+
+	};
+
+4. pinGeneration :-
+
+                 ⁃  Url :- /newCreditCardApplication/generatePIN
+	⁃	Method:- PUT
+	⁃	Requestbody:- JSONpayload
+	⁃	Param:-
+	⁃	Response:- JSONresponse
+
+RequestPayload = {
+		creditCardNumber:- number,
+		firstPin:- number,
+		newPin:- number,
+		confirmPin:- number,
+		identityDocId:- number
+	};
+
+Response = {
+		status: “ “,
+		data: {
+				cardStatus: Approved/Rejected/Pending
+				cardType: PLATINUM /GOLD /VISA
+				creditCardNumber: number,
+		};
+
+	};
+
+
