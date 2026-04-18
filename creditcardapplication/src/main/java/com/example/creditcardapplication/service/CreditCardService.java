@@ -1,5 +1,6 @@
 package com.example.creditcardapplication.service;
 
+import java.util.Random;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,12 +38,13 @@ public class CreditCardService {
 
 	private String generateCreditCardNumber(CreditEnum creditEnum) {
 		String creditCardNumber = "";
-		if (CreditEnum.PLATINUM == creditEnum) {
-			creditCardNumber = "1000-1001-2001";
+		Random random = new Random();
+		if (CreditEnum.PLATINUM == creditEnum) {			
+			creditCardNumber = "1000-1001-".concat(String.valueOf(random.nextInt()));
 		} else if (CreditEnum.GOLD == creditEnum) {
-			creditCardNumber = "2000-1001-2001";
+			creditCardNumber = "2000-1001-".concat(String.valueOf(random.nextInt()));
 		} else {
-			creditCardNumber = "3000-1001-2001";
+			creditCardNumber = "3000-1001-".concat(String.valueOf(random.nextInt()));
 		}
 		return creditCardNumber;
 	}
