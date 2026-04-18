@@ -2,14 +2,19 @@ package com.example.creditcardapplication.service;
 
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.creditcardapplication.dao.CreditCardDAO;
 import com.example.creditcardapplication.dtos.CreditCardInfo;
 import com.example.creditcardapplication.dtos.CreditEnum;
 import com.example.creditcardapplication.dtos.StatusEnum;
 
 @Service
 public class CreditCardService {
+
+	@Autowired
+	CreditCardDAO dao;
 
 	public CreditCardInfo activateCreditCard(String userID, int creditScore) {
 		CreditCardInfo creditCardInfo = getCreditCard(creditScore);
@@ -22,9 +27,10 @@ public class CreditCardService {
 			String firstPIN = generateFirstPIN(creditCardInfo.getCardNumber());
 			creditCardInfo.setPin(firstPIN);
 		}
+		dao.save(creditCardInfo);
 		return creditCardInfo;
 	}
-	
+
 	private String generateFirstPIN(String creditCardNumber) {
 		return UUID.fromString(creditCardNumber).toString();
 	}
@@ -61,5 +67,5 @@ public class CreditCardService {
 
 		return creditCardInfo;
 	}
-	
+
 }

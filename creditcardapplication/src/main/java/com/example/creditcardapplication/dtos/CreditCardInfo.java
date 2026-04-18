@@ -1,19 +1,36 @@
 package com.example.creditcardapplication.dtos;
 
-public class CreditCardInfo {
+import org.springframework.data.annotation.Id;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Enumerated;
+
+public class CreditCardInfo {
+	
+	@Id
+	private int cardID;
+
+	@Enumerated
+	@Column
 	private StatusEnum status;
 
+	@Enumerated
+	@Column
 	private CreditEnum creditEnum;
 
+	@Column
 	private double creditLimit;
 
+	@Column
 	private String cardNumber;
 
+	@Column
 	private String pin;
 	
+	@Column
 	private int applicantID;
 	
+	@Column
 	private String comments;
 
 	public StatusEnum getStatus() {
