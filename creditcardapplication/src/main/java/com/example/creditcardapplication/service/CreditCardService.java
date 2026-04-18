@@ -23,11 +23,10 @@ public class CreditCardService {
 		if (creditCardInfo.getStatus() == StatusEnum.APPROVED) {
 			String creditCardNumber = generateCreditCardNumber(creditCardInfo.getCreditEnum());
 			creditCardInfo.setCardNumber(creditCardNumber);
-		}
-		if (creditCardInfo.getCardNumber() != null) {
 			String firstPIN = generateFirstPIN(creditCardInfo.getCardNumber());
 			creditCardInfo.setPin(firstPIN);
 		}
+		
 		dao.save(creditCardInfo);
 		return creditCardInfo;
 	}

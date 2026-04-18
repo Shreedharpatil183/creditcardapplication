@@ -4,7 +4,9 @@ import org.springframework.data.annotation.Id;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.Table;
 
+@Table(name = "CreditCardInfo")
 public class CreditCardInfo {
 	
 	@Id
